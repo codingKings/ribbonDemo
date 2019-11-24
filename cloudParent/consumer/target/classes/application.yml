@@ -1,0 +1,21 @@
+server: 
+  port: 8096
+spring: 
+  application: 
+    name: consumerService
+eureka: 
+  client: 
+    service-url: 
+      defaultZone: http://localhost:9001/eureka
+    # 拉取服务列表  默认是需要拉取的，true
+    fetch-registry: true
+    # 拉取服务列表周期是3秒
+    registry-fetch-interval-seconds: 3
+  instance: 
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+# 更改负载均衡器的规则 ，默认是轮询规则RoundRobinRule,随机规则是RandomRule,hash规则：RetryRule
+userService: 
+  ribbon: 
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+   
